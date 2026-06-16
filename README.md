@@ -16,6 +16,18 @@ K8s 단일 클러스터의 SPOF 문제를 **멀티클러스터 + Istio Service M
 
 ---
 
+## 시스템 다이어그램
+
+Service Mesh + GitOps + 모니터링 스택 전체 구조:
+
+![SW Diagram](docs/images/architecture.png)
+
+CI/CD 흐름 — Jenkins가 빌드/이미지 푸시 + manifest 업데이트, ArgoCD가 카나리 가중치 변경을 클러스터에 동기화:
+
+![CI/CD Flow](docs/images/cicd-flow.png)
+
+---
+
 ## 디렉토리
 
 | 경로 | 내용 |
