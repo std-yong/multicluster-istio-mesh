@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: staff-service-canary
+spec:
+  hosts:
+    - staff-service
+  http:
+    - route:
+        - destination:
+            host: staff-service
+            subset: stable
+          weight: 90
+        - destination:
+            host: staff-service
+            subset: canary
+          weight: 10

@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: default-circuit-breaker
+spec:
+  host: "*.default.svc.cluster.local"
+  trafficPolicy:
+    outlierDetection:
+      consecutiveGatewayErrors: 5   # 연속 5회 5xx → 격리
+      interval: 10s                  # 10초 단위 분석
+      baseEjectionTime: 30s          # 격리 30초 유지
+      maxEjectionPercent: 50         # 전체 Pod의 최대 50%까지만
